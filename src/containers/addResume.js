@@ -4,7 +4,6 @@ import { Button, Form, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Edit = props => {
-  //first basic and address edit first page
 
   const [Edit, setEdit] = useState(true);
   const [error, setError] = useState(null);
@@ -56,19 +55,19 @@ const Edit = props => {
       return false;
     }
     if (City === undefined || City === "") {
-      setError("invalid Linkedin");
+      setError("invalid City");
       return false;
     }
     if (District === undefined || District === "") {
-      setError("invalid Linkedin");
+      setError("invalid District");
       return false;
     }
     if (State === undefined || State === "") {
-      setError("invalid Linkedin");
+      setError("invalid State");
       return false;
     }
     if (Country === undefined || Country === "") {
-      setError("invalid Linkedin");
+      setError("invalid Country");
       return false;
     }
     if (Pin === undefined || Pin === "" || !pinvalid.test(Pin)) {
@@ -81,7 +80,7 @@ const Edit = props => {
 
   const onNextFunction = () => {
     if (Edit === true) {
-      props.history.push("/Edit2");
+      props.history.push("/education");
     } else {
       setError("Save the Changes");
     }
@@ -114,7 +113,7 @@ const Edit = props => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="main">
       <Card>
         <Form
           style={{ padding: "10px" }}
@@ -178,6 +177,7 @@ const Edit = props => {
               </Col>
             </Form.Row>
           </Form.Group>
+
           <Form.Group>
             <h4 style={{ padding: "10px" }}>Address</h4>
             <Form.Row>
@@ -232,7 +232,7 @@ const Edit = props => {
           >
             <Link
               style={{ margin: "10px" }}
-              to="/home"
+              to="/view"
               className="btn btn-primary"
             >
               Previous

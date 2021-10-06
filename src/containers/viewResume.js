@@ -1,27 +1,28 @@
 import React from "react"
 import { Card } from "react-bootstrap"
+import { Link } from "react-router-dom";
 import {useSelector} from 'react-redux'
 
 const View = () => {
-
     const firstName = useSelector(state => state.reducer.FirstName)
     const lastName = useSelector(state => state.reducer.LastName)
     const Email = useSelector(state => state.reducer.email)
     const Phone =useSelector(state=>state.reducer.Phone)
-    const Linkedin= useSelector(state=>state.reducer.Linkedin)
-    const Summary=useSelector(state=>state.reducer.Summary)
     const Address = useSelector(state => state.reducer.Address)
     const Education = useSelector(state => state.reducer.Education)
     const Experince = useSelector(state => state.reducer.Experince)
     const Skill = useSelector(state => state.reducer.Skill)
 
     return (
-        <Card border="primary" style={{ display:"flex",justifyContent:"center",margin:"30px" }}>
+        <Card className="dash-card">
+            <h1>Resume Builder with React Js - Aboobakkar P S</h1>
+            <Link to="/add" className="dash-link btn btn-primary">
+                Create Resume
+            </Link>
             <div style={{ display: "flex", direction: "row",justifyContent:"space-around" }}>
                 <Card style={{flex:"3",margin:"5px"}}>
                     <Card.Body>
                         <Card.Title>{firstName} {lastName}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted font-italic">Linkedin: {Linkedin}</Card.Subtitle>
                         <Card.Subtitle className="mb-2 text-muted  font-italic">Phone : {Phone}</Card.Subtitle>
                         <Card.Subtitle className="mb-2 text-muted font-italic">{Email}</Card.Subtitle>  
                     </Card.Body>
@@ -29,29 +30,23 @@ const View = () => {
                 <Card style={{flex:"1",margin:"5px"}}>
                 <Card.Body>
                         <Card.Subtitle className="mb-2 text-muted font-italic">
-                            {Address && Address.City}
+                            {Address.City}
                             </Card.Subtitle>     
                             <Card.Subtitle className="mb-2 text-muted font-italic">
-                           {Address && Address.District}
+                           {Address.District}
                             </Card.Subtitle>  
                             <Card.Subtitle className="mb-2 text-muted font-italic">
-                            {Address && Address.State}
+                            {Address.State}
                             </Card.Subtitle>  
                             <Card.Subtitle className="mb-2 text-muted font-italic">
-                            {Address && Address.Country}
+                            {Address.Country}
                             </Card.Subtitle> 
                             <Card.Subtitle className="mb-2 text-muted font-italic">
-                            {Address && Address.Pincode}
+                            {Address.Pincode}
                             </Card.Subtitle>   
                     </Card.Body>
             </Card>
             </div>
-            <Card style={{margin:"5px"}}>
-                    <Card.Body>
-                        <Card.Title>Professional Summary</Card.Title>
-                        <Card.Text>{Summary}</Card.Text>
-                    </Card.Body>
-                </Card>
             <div style={{ display: "flex", direction: "row",justifyContent:"space-around" }}>
                 <Card  style={{flex:"3",margin:"5px"}}>
                     <Card.Body>

@@ -1,71 +1,55 @@
 
-const initialState = {
-    resumes:[],
-};
-const reducer = (state = initialState, action) => {
+const intial = {
+    email: "aboobakkar.mec@gmail.com",
+    FirstName: "Aboobakkarr",
+    LastName: "P S",
+    Phone: 9747752015,
+    Address: { City: "Pallikkara", District: "Ernakulam", State: "kerala", Country: "India", Pincode: "683565" },
+    Education: [{
+        Id: "1",
+        Degree: "Btech",
+        Institution: "Model Engineering College",
+        Percentage : "55"
+    }],
+    Experince: [{
+        Id: 1,
+        Institution: "Beo Software Pvt Ltd",
+        Post: "React Developer",
+        TechnologiesUsed: ["React", "JavaScript"]
+    }],
+    Skill: [{ id: "1", text: "React" }, { id: "2", text: "Javascript" }]
+}
+const reducer = (state = intial, action) => {
     switch (action.type) {
-        case "auth":
-            {
-                console.log("auth reducer")
-                return { ...state, Auth: true }
-            }
-        case "signout":
-            {
-                return { ...state, Auth: false }
-            }
-
         case "AddEducation": {
-            console.log("addEducation reducer", action.payload)
             return { ...state, Education: action.payload }
         }
         case "RemoveEducation": {
-            console.log("removeEducation reducer", action.payload)
             return { ...state, Education: action.payload }
         }
-        case "RemoveExper": {
-            console.log("RemoveExperince reducer", action.payload)
+        case "AddExperience": {
             return { ...state, Experince: action.payload }
         }
-        case "AddExperince": {
-            console.log("AddExprenice Reducer", action.payload)
+        case "RemoveExperience": {
             return { ...state, Experince: action.payload }
         }
         case "Basic": {
-            console.log("basic dispatch", action.payload)
             return {
                 ...state,
                 email: action.payload.email,
                 FirstName: action.payload.first,
                 LastName: action.payload.last,
                 Phone: action.payload.phone,
-                Linkedin: action.payload.Linkedin,
-                Summary: action.payload.Summary,
                 Address: { City: action.payload.City, District: action.payload.District, State: action.payload.State, Country: action.payload.Country, Pincode: action.payload.Pin },
             }
         }
         case "Addskill": {
-            console.log("add skill reducer", action.payload)
             return { ...state, Skill: action.payload }
-        }
-        case "Addinterest": {
-            console.log("interest", action.payload)
-            return { ...state, Interest: action.payload }
-        }
-        case "Addreference": {
-            return { ...state, Reference: action.payload }
         }
         case "Removeskill": {
-            console.log("remove skill reducer",action.payload)
             return { ...state, Skill: action.payload }
         }
-        case "Removeinterest": {
-            return { ...state, Interest: action.payload }
-        }
-        case "Removereference": {
-            return { ...state, Reference: action.payload }
-        }
         default:
-            console.log("Default")
             return state
     }
 }

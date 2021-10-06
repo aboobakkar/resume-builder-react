@@ -3,10 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Resume from './components/resume';
-import AddResume from './components/addResume';
-import Dashboard from './components/Dashboard';
-import ViewResume from './components/viewResume';
+import Dashboard from './containers/Dashboard';
+import AddResume from './containers/addResume';
+import ViewResume from './containers/viewResume';
+import AddEducation from './containers/addEducation';
+import AddExperience from './containers/addExperience';
+import AddSkill from './containers/addSkill';
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
       <Route exact path="/" component={Dashboard} />
       <Route exact path="/add" component={AddResume} />
       <Route exact path="/view" component={ViewResume} />
-      <Route exact path="/edit1" component={Resume} />
+      <Route exact path="/education" component={AddEducation} />
+      <Route exact path="/experience" component={AddExperience} />
+      <Route exact path="/skill" component={AddSkill} />
     </Provider>
   </Router>
   );
