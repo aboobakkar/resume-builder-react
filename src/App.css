@@ -28,6 +28,20 @@
   color: #61dafb;
 }
 
+.dash-container {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.dash-link {
+  margin: 30px;
+}
+
+.dash-card {
+  padding: 60px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
