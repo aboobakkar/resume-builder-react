@@ -10,7 +10,7 @@ const AddExperience = props => {
   const Dispatch = useDispatch();
   const list = [];
   const [add, setAdd] = useState({ list });
-  const { Experience } = useSelector(state => state.reducer);
+  const { Experience } = useSelector(state => state.resume);
 
   const Removeexisting = data => {
     let educlist = Experience;

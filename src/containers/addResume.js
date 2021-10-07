@@ -8,7 +8,7 @@ const Edit = props => {
   const [Edit, setEdit] = useState(true);
   const [error, setError] = useState(null);
 
-  const { FirstName, LastName, Email, Phone, Address } = useSelector(state => state.reducer)
+  const { FirstName, LastName, Email, Phone, Address } = useSelector(state => state.resume)
   
   const Dispatch = useDispatch();
 

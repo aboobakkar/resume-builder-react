@@ -6,7 +6,7 @@ import { Skills } from "../components/skills";
 
 const View = props => {
 
-  const Skill = useSelector(state => state.reducer.Skill);
+  const Skill = useSelector(state => state.resume.Skill);
   const Dispatch = useDispatch();
 
   const skillsuggestion = [

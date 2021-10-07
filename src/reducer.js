@@ -21,8 +21,18 @@ const IntialState = {
     }],
     Skill: [{ id: "1", text: "React" }, { id: "2", text: "Javascript" }]
 }
-const resumes = (state = IntialState, action) => {
+const reducer = (state = IntialState, action) => {
     switch (action.type) {
+        case "Basic": {
+            return {
+                ...state,
+                Email: action.payload.email,
+                FirstName: action.payload.first,
+                LastName: action.payload.last,
+                Phone: action.payload.phone,
+                Address: { Address: action.payload.Address, Country: action.payload.Country },
+            }
+        }
         case "AddEducation": {
             return { ...state, Education: action.payload }
         }
@@ -35,16 +45,6 @@ const resumes = (state = IntialState, action) => {
         case "RemoveExperience": {
             return { ...state, Experience: action.payload }
         }
-        case "Basic": {
-            return {
-                ...state,
-                Email: action.payload.email,
-                FirstName: action.payload.first,
-                LastName: action.payload.last,
-                Phone: action.payload.phone,
-                Address: { City: action.payload.City, District: action.payload.District, State: action.payload.State, Country: action.payload.Country, Pincode: action.payload.Pin },
-            }
-        }
         case "Addskill": {
             return { ...state, Skill: action.payload }
         }
@@ -56,4 +56,4 @@ const resumes = (state = IntialState, action) => {
     }
 }
 
-export default resumes
+export default reducer

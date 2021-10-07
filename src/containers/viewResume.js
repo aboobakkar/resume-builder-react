@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux'
 
 const ViewResume = () => {
     
-const { FirstName, LastName, Email, Phone, Address, Education, Experience, Skill } = useSelector(state => state.reducer)
+const { FirstName, LastName, Email, Phone, Address, Education, Experience, Skill } = useSelector(state => state.resume)
     return (
         <Card className="dash-card">
             <h1>Sample Resume -  Aboobakkar P S</h1>

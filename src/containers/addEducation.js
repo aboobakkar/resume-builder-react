@@ -6,7 +6,7 @@ import { AddElement } from "../components/education";
 
 const AddEducation = props => {
 
-  const { Education } = useSelector(state => state.reducer);
+  const { Education } = useSelector(state => state.resume);
 
   const Dispatch = useDispatch();
   const list = [];
