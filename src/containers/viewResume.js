@@ -10,7 +10,7 @@ const { FirstName, LastName, Email, Phone, Address, Education, Experience, Skill
         <Card className="dash-card">
             <h1>Sample Resume -  Aboobakkar P S</h1>
             <Link to="/add" className="dash-link btn btn-primary">
-                Create Resume use this Template
+                Create Resume Edit this Template
             </Link>
             <div className="link">
                 <Card style={{flex:"3",margin:"5px"}}>
