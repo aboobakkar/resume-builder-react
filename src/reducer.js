@@ -1,5 +1,5 @@
 
-const intial = {
+const IntialState = {
     email: "aboobakkar.mec@gmail.com",
     FirstName: "Aboobakkarr",
     LastName: "P S",
@@ -19,7 +19,7 @@ const intial = {
     }],
     Skill: [{ id: "1", text: "React" }, { id: "2", text: "Javascript" }]
 }
-const reducer = (state = intial, action) => {
+const reducer = (state = IntialState, action) => {
     switch (action.type) {
         case "AddEducation": {
             return { ...state, Education: action.payload }

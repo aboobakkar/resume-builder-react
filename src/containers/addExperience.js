@@ -103,13 +103,7 @@ const View = props => {
             ))}
           </Form.Group>
         </Form>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "Space-between"
-          }}
-        >
+        <div className="link">
           <Link
             style={{ margin: "10px" }}
             to="/education"

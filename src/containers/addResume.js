@@ -30,18 +30,7 @@ const Edit = props => {
   }) => {
     let pinvalid = /^\d{6}$/;
     let phonevalid = /^\d{10}$/;
-    console.log(
-      "validates",
-      first,
-      last,
-      email,
-      phone,
-      City,
-      District,
-      State,
-      Country,
-      Pin
-    );
+
     if (first === undefined || first === "") {
       setError("invalid firstname");
       return false;
@@ -123,16 +112,9 @@ const Edit = props => {
           }}
         >
           <Form.Group>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                padding: "10px"
-              }}
-            >
-              <h4>Basic Information</h4>
-              <h6 style={{ color: "red" }}>{error}</h6>
+            <div className="form-header">
+              <h4>Personal Details</h4>
+              <h6 className="error">{error}</h6>
               <Button className="btn  btn-success btn-sm" type="submit">
                 {" "}
                 {Edit ? "Edit" : "Save"}
@@ -157,6 +139,8 @@ const Edit = props => {
                   defaultValue={lastName}
                 />
               </Col>
+              </Form.Row>
+              <Form.Row>
               <Col>
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
@@ -223,13 +207,7 @@ const Edit = props => {
               </Col>
             </Form.Row>
           </Form.Group>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "Space-between"
-            }}
-          >
+          <div className="link">
             <Link
               style={{ margin: "10px" }}
               to="/view"

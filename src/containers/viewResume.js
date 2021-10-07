@@ -15,9 +15,9 @@ const View = () => {
 
     return (
         <Card className="dash-card">
-            <h1>Resume Builder with React Js - Aboobakkar P S</h1>
+            <h1>Sample Resume -  Aboobakkar P S</h1>
             <Link to="/add" className="dash-link btn btn-primary">
-                Create Resume
+                Create Resume use this Template
             </Link>
             <div style={{ display: "flex", direction: "row",justifyContent:"space-around" }}>
                 <Card style={{flex:"3",margin:"5px"}}>

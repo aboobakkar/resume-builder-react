@@ -48,6 +48,23 @@
   justify-content: center;
 }
 
+.form-header { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.error {
+  color: #ff0000;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

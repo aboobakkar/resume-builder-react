@@ -42,13 +42,7 @@ const View = props => {
             addelement={SaveSkilltag}
           />
         </div>
-        <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center"
-        }}
-      >
+        <div className="link">
         <Link
           style={{ margin: "10px" }}
           to="/experience"
