@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Skills } from "../components/skills";
 
-const View = props => {
+const AddSkill = props => {
 
   const Skill = useSelector(state => state.resume.Skill);
   const Dispatch = useDispatch();
@@ -12,7 +12,9 @@ const View = props => {
   const skillsuggestion = [
     { id: "React", text: "React" },
     { id: "Javascript", text: "Javascript" },
-    { id: "PHP", text: "PHP" }
+    { id: "PHP", text: "PHP" },
+    { id: "Python", text: "Python" },
+    { id: "Java", text: "Java" }
   ];
   const SaveSkilltag = data => {
     Dispatch({ type: "Addskill", payload: data });
@@ -56,4 +58,4 @@ const View = props => {
   );
 };
 
-export default View;
+export default AddSkill;

@@ -48,9 +48,9 @@
   /* Styles for selected tags */
   .ReactTags__selected span.ReactTags__tag {
     border: 1px solid #ddd;
-    background: #330883;
+    background: #248bcb;
     color: white;
-    font-size: 12px;
+    font-size: 18px;
     display: inline-block;
     padding: 5px;
     margin: 0 5px;
@@ -73,7 +73,7 @@
     width: 200px;
   }
   .ReactTags__suggestions li {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(221, 221, 221);
     padding: 5px 10px;
     margin: 0;
   }
@@ -83,7 +83,7 @@
     font-weight: 600;
   }
   .ReactTags__suggestions ul li.ReactTags__activeSuggestion {
-    background: #b7cfe0;
+    background: #f88d8d;
     cursor: pointer;
   }
   

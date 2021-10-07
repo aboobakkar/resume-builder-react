@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Edit = props => {
+const AddResume = props => {
 
   const [Edit, setEdit] = useState(true);
   const [error, setError] = useState(null);
@@ -21,10 +21,9 @@ const Edit = props => {
     last,
     email,
     phone,
-    Address,
-    Country
+    address,
+    country
   }) => {
-    let phonevalid = /^\d{10}$/;
 
     if (first === undefined || first === "") {
       setError("invalid firstname");
@@ -34,15 +33,19 @@ const Edit = props => {
       setError("invalid lastname");
       return false;
     }
-    if (phone === undefined || phone === "" || !phonevalid.test(phone)) {
-      setError("Phone Not Valid Need to 10 Digits");
+    if (email === undefined || email === "") {
+      setError("invalid email");
       return false;
     }
-    if (Address === undefined || Address === "") {
+    if (phone === undefined || phone === "") {
+      setError("Invalid phone Number");
+      return false;
+    }
+    if (address === undefined || address === "") {
       setError("invalid City");
       return false;
     }
-    if (Country === undefined || Country === "") {
+    if (country === undefined || country === "") {
       setError("invalid Country");
       return false;
     }
@@ -54,7 +57,7 @@ const Edit = props => {
     if (Edit === true) {
       props.history.push("/education");
     } else {
-      setError("Save the Changes");
+      setError("Save the Changes Before Next");
     }
   };
 
@@ -64,11 +67,10 @@ const Edit = props => {
       last: e.target.elements.last.value,
       email: e.target.elements.email.value,
       phone: e.target.elements.phone.value,
-      Address: e.target.elements.address.value,
-      Country: e.target.elements.country.value,
+      address: e.target.elements.address.value,
+      country: e.target.elements.country.value,
     };
     if (!Edit) {
-      console.log("data", data);
       let saveable = validateOnchange(data);
       if (saveable) {
         SaveFunction(data);
@@ -188,4 +190,4 @@ const Edit = props => {
   );
 };
 
-export default Edit;
+export default AddResume;

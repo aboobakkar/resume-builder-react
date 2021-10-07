@@ -12,10 +12,9 @@ const AddExperience = props => {
   const [add, setAdd] = useState({ list });
   const { Experience } = useSelector(state => state.resume);
 
-  const Removeexisting = data => {
+  const RemoveExisting = data => {
     let educlist = Experience;
     let filterlist = educlist.filter(item => {
-      console.log("id", item.Id);
       return item.Id !== data.Id;
     });
 
@@ -35,7 +34,6 @@ const AddExperience = props => {
   };
 
   const SaveElement = data => {
-    console.log("savedata", data);
     let Final = Experience;
     let list = Final.concat([data]);
     Dispatch({ type: "AddExperience", payload: list });
@@ -47,15 +45,12 @@ const AddExperience = props => {
   };
 
   const SaveExist = data => {
-    console.log("saveExist", data);
     let Final = Experience;
-    console.log("final", Final);
     let found = Final.find(element => {
       return element.Id === data.Id;
     });
 
-    var index = Final.indexOf(found);
-    console.log("found", index);
+    let index = Final.indexOf(found);
     if (index !== -1) {
       Final[index] = data;
     }
@@ -91,7 +86,7 @@ const AddExperience = props => {
               <AddElement
                 data={item}
                 key={item.Id}
-                RemoveElement={Removeexisting}
+                RemoveElement={RemoveExisting}
                 SaveElement={SaveExist}
                 disable={true}
                 count={item.Id}
