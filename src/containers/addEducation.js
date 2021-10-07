@@ -4,9 +4,10 @@ import { Button, Form, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AddElement } from "../components/education";
 
-const View = props => {
+const AddEducation = props => {
 
-  const Education = useSelector(state => state.reducer.Education);
+  const { Education } = useSelector(state => state.reducer);
+
   const Dispatch = useDispatch();
   const list = [];
   const [add, setAdd] = useState({ list });
@@ -23,7 +24,7 @@ const View = props => {
 
   const AddChange = () => {
     const arr = add.list;
-    arr.push({ Id: "", Degree: "", Institution: "", Grade: "", Summary: "" });
+    arr.push({ Id: "", Degree: "", Institution: "", Percentage: "", Location: ""});
     setAdd({ list: arr });
   };
 
@@ -58,10 +59,10 @@ const View = props => {
 
   return (
     <div className="main">
-      <Card style={{ paddingRight: "10px", paddingLeft: "10px" }}>
-        <Form style={{ padding: "5px" }}>
+      <Card>
+        <Form className="dash-card">
           <Form.Group>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="form-header">
               <h4>Education</h4>
               <Button
                 className="btn btn-success btn-sm"
@@ -72,6 +73,7 @@ const View = props => {
                 Add
               </Button>
             </div>
+
             {add.list.map(item => (
               <AddElement
                 key={item.Id}
@@ -82,8 +84,10 @@ const View = props => {
                 disable={false}
               />
             ))}
+          </Form.Group>
+          
+          <Form.Group>
             {Education.map(item => {
-
               return (
                 <AddElement
                   key={item.Id}
@@ -102,13 +106,13 @@ const View = props => {
           <Link
             style={{ margin: "10px" }}
             to="/add"
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary btn-md"
           >
             Previous
           </Link>
           <Button
             style={{ margin: "10px" }}
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary btn-md"
             onClick={() => onNextFunction()}
           >
             Next
@@ -119,4 +123,4 @@ const View = props => {
   );
 };
 
-export default View;
+export default AddEducation;

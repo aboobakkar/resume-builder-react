@@ -22,18 +22,9 @@ const View = props => {
   };
 
   return (
-    <div
-      className="col-sm-12"
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      <Card style={{ display: "flex", alignItems: "center", padding: "30px" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
-        >
+    <div className="main">
+      <Card>
+        <div className="dash-card">
           <h4>Skills</h4>
           <Skills
             data={Skill}

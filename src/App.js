@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { NavBar } from './components/navBar';
 import Dashboard from './containers/Dashboard';
 import AddResume from './containers/addResume';
 import ViewResume from './containers/viewResume';
@@ -14,6 +15,7 @@ function App() {
   return (
     <Router>
     <Provider store={store}>
+      <NavBar />
       <Route exact path="/" component={Dashboard} />
       <Route exact path="/add" component={AddResume} />
       <Route exact path="/view" component={ViewResume} />

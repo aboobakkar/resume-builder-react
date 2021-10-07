@@ -6,8 +6,8 @@ export const AddElement=({data,RemoveElement,count,SaveElement,disable})=>{
 
     const [Degree,setDegree]=useState(data.Degree)
     const [Institution,setInsti]=useState(data.Institution)
-    const [Summary,setSummary]=useState(data.Summary)
-    const [Grade,setGrade]=useState(data.Grade)
+    const [Percentage,setPercentage]=useState(data.Percentage)
+    const [Location,setLocation]=useState(data.Location)
     const [Edit,setEdit]=useState(disable)
     const [error,setError]=useState("")
 
@@ -20,12 +20,12 @@ export const AddElement=({data,RemoveElement,count,SaveElement,disable})=>{
             setError("Institution undefined")
             return false
         }
-        else if (Grade === undefined || Grade === "") {
-            setError("Grade undefined")
+        else if (Percentage === undefined || Percentage === "") {
+            setError("Percentage undefined")
             return false
         }
-        else if (Summary === undefined || Summary === "") {
-            setError("Summary undefined")
+        else if (Location === undefined || Location === "") {
+            setError("Location undefined")
             return false
         }
         else{
@@ -40,7 +40,7 @@ export const AddElement=({data,RemoveElement,count,SaveElement,disable})=>{
             setError("")
             let valid=Valid()
             if(valid){
-            SaveElement({Degree,Institution,Grade,Summary,Id:count})
+            SaveElement({Degree,Institution,Percentage,Location,Id:count})
             setEdit(true)
             }
 
@@ -53,30 +53,56 @@ export const AddElement=({data,RemoveElement,count,SaveElement,disable})=>{
 
 
     return(
-        <div style={{ marginTop: "30px" }}>
+        <React.Fragment>
             <Form.Row>
                 <Col>
                     <Form.Label >Degree</Form.Label>
-                    <Form.Control className="form-control form-control-sm" disabled={Edit} defaultValue={Degree} onChange={(e)=>setDegree(e.target.value)} />
+                    <Form.Control 
+                        disabled={Edit} 
+                        defaultValue={Degree} 
+                        onChange={(e)=>setDegree(e.target.value)} 
+                    />
                 </Col>
                 <Col>
                     <Form.Label >Institution</Form.Label>
-                    <Form.Control className="form-control form-control-sm" disabled={Edit} type="email" defaultValue={Institution} onChange={(e)=>setInsti(e.target.value)} />
-                </Col>
-                <Col>
-                    <Form.Label >Grade</Form.Label>
-                    <Form.Control className="form-control form-control-sm" disabled={Edit} type="email" defaultValue={Grade} onChange={(e)=>setGrade(e.target.value)} />
+                    <Form.Control 
+                        disabled={Edit} 
+                        type="text" 
+                        defaultValue={Institution} 
+                        onChange={(e)=>setInsti(e.target.value)} 
+                    />
                 </Col>
                 </Form.Row>
+
                 <Form.Row>
-                <Form.Label >Summary</Form.Label>
-                <Form.Control className="form-control form-control-sm" disabled={Edit} as="textarea" type="email" defaultValue={Summary} onChange={(e)=>setSummary(e.target.value)} />
+                <Col>
+                    <Form.Label >Percentage</Form.Label>
+                    <Form.Control 
+                        disabled={Edit}
+                        defaultValue={Percentage} 
+                        onChange={(e)=>setPercentage(e.target.value)} 
+                     />
+                </Col>
+                <Col>
+                    <Form.Label>Location</Form.Label>
+                    <Form.Control 
+                        disabled={Edit} 
+                        defaultValue={Location} 
+                        onChange={(e)=>setLocation(e.target.value)} 
+                    />
+                </Col>
+                </Form.Row>
+
+                <Form.Row className="form-header">
+                    <Button className="btn  btn-danger btn-md"  onClick={() => { RemoveElement(data) }}>Remove</Button>
+                    <h6 className="error">{error}</h6>
+                    <Button 
+                        className={Edit ? "btn btn-secondary btn-md" : "btn btn-warning btn-md"}  
+                        onClick={(e) => {ButtonClick(e.target.value)}}
+                    >
+                    {Edit?"Edit":"Save"}
+                </Button>
             </Form.Row>
-            <Form.Row style={{  display: "flex", flexDirection: "row", justifyContent: "Space-between",paddingTop:"10px" }}>
-                <Button className="btn  btn-danger btn-sm"  onClick={() => { RemoveElement(data) }}>Remove</Button>
-                <h6 style={{ "color": "red" }}>{error}</h6>
-                <Button className={Edit ? "btn btn-secondary btn-sm" : "btn btn-warning btn-sm"}  onClick={(e) => {ButtonClick(e.target.value)}}>{Edit?"Edit":"Save"}</Button>
-            </Form.Row>
-        </div>
+        </React.Fragment>
     )
 }

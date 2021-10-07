@@ -3,28 +3,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AddElement } from "../components/experience";
-const View = props => {
-  //Expereince edit page
+
+
+const AddExperience = props => {
+
   const Dispatch = useDispatch();
   const list = [];
   const [add, setAdd] = useState({ list });
-  const Experince = useSelector(state => state.reducer.Experince);
+  const { Experience } = useSelector(state => state.reducer);
 
   const Removeexisting = data => {
-    let educlist = Experince;
+    let educlist = Experience;
     let filterlist = educlist.filter(item => {
       console.log("id", item.Id);
       return item.Id !== data.Id;
     });
-    console.log("list", filterlist);
+
     Dispatch({ type: "RemoveExperience", payload: filterlist });
   };
 
   const AddChange = () => {
     const ar = add.list;
-    ar.push({ Id: "", Degree: "", Institution: "", Grade: "", Summary: "" });
+    ar.push({ Id: "", Degree: "", Institution: "", Percentage: "", Location: "" });
     setAdd({ list: ar });
-    console.log("add", add);
   };
 
   const RemoveElement = () => {
@@ -35,9 +36,8 @@ const View = props => {
 
   const SaveElement = data => {
     console.log("savedata", data);
-    let Final = Experince;
+    let Final = Experience;
     let list = Final.concat([data]);
-    console.log("Finallist", list);
     Dispatch({ type: "AddExperience", payload: list });
     RemoveElement();
   };
@@ -48,32 +48,28 @@ const View = props => {
 
   const SaveExist = data => {
     console.log("saveExist", data);
-    let Final = Experince;
+    let Final = Experience;
     console.log("final", Final);
     let found = Final.find(element => {
       return element.Id === data.Id;
     });
-    console.log("found", found);
+
     var index = Final.indexOf(found);
     console.log("found", index);
     if (index !== -1) {
       Final[index] = data;
     }
-
-    // let list = Final.concat([data])
-    console.log("Finallist", Final);
-    // Dispatch({ type: "AddEducation", payload: list })
   };
 
   return (
     <div className="main">
       <Card>
-        <Form style={{ padding: "10px" }}>
+        <Form className="dash-card">
           <Form.Group>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h4>Expereince</h4>
+            <div className="form-header">
+              <h4>Experience</h4>
               <Button
-                className="btn  btn-success btn-sm"
+                className="btn  btn-success btn-md"
                 onClick={() => {
                   AddChange();
                 }}
@@ -88,10 +84,10 @@ const View = props => {
                 RemoveElement={RemoveElement}
                 SaveElement={SaveElement}
                 disable={false}
-                count={Experince.length + 1}
+                count={Experience.length + 1}
               />
             ))}
-            {Experince.map(item => (
+            {Experience.map(item => (
               <AddElement
                 data={item}
                 key={item.Id}
@@ -108,12 +104,12 @@ const View = props => {
             style={{ margin: "10px" }}
             to="/education"
             type="submit"
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary btn-md"
           >
             Previous
           </Link>
           <Button
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary btn-md"
             style={{ margin: "10px" }}
             onClick={() => onNextFunction()}
           >
@@ -125,4 +121,4 @@ const View = props => {
   );
 };
 
-export default View;
+export default AddExperience;

@@ -6,20 +6,20 @@ export const AddElement=({data,RemoveElement,SaveElement,disable,count})=>{
 
     console.log("data",data)
 
-    const [Institution,setInsti]=useState(data.Institution)
-    const [Post,setPost]=useState(data.Post)
+    const [Company,setCompany]=useState(data.Company)
+    const [Role,setRole]=useState(data.Role)
     const [Summary,setSummary]=useState(data.Summary)
     const [TechnologiesUsed,setTechnologiesUsed]=useState(data.TechnologiesUsed)
     const [Edit, setEdit] = useState(disable)
     const [error, setError] = useState("")
 
     const Valid = () => {
-        if (Post === undefined || Post === "") {
-            setError("post undefined")
+        if (Role === undefined || Role === "") {
+            setError("Role undefined")
             return false
         }
-        else if (Institution === undefined || Institution === "") {
-            setError("Institution undefined")
+        else if (Company === undefined || Company === "") {
+            setError("Company undefined")
             return false
         }
         else if (TechnologiesUsed === undefined || TechnologiesUsed === "") {
@@ -41,7 +41,7 @@ export const AddElement=({data,RemoveElement,SaveElement,disable,count})=>{
             setError("")
             let valid = Valid()
             if (valid) {
-                SaveElement({ Institution, Post, Summary, TechnologiesUsed, Id: count })
+                SaveElement({ Company, Role, Summary, TechnologiesUsed, Id: count })
                 setEdit(true)
             }
 
@@ -56,26 +56,59 @@ export const AddElement=({data,RemoveElement,SaveElement,disable,count})=>{
         <div style={{ marginTop: "30px" }}>
             <Form.Row>
                 <Col>
-                    <Form.Label>Institution</Form.Label>
-                    <Form.Control className="form-control form-control-sm" disabled={Edit} defaultValue={Institution} onChange={(e)=>setInsti(e.target.value)} />
+                    <Form.Label>Company Name</Form.Label>
+                    <Form.Control 
+                    className="form-control form-control-sm" 
+                    disabled={Edit} 
+                    defaultValue={Company} 
+                    onChange={(e)=>setCompany(e.target.value)} 
+                    />
                 </Col>
                 <Col>
-                    <Form.Label>Post</Form.Label>
-                    <Form.Control className="form-control form-control-sm" disabled={Edit} type="text" defaultValue={Post} onChange={(e)=>setPost(e.target.value)} />
+                    <Form.Label>Role</Form.Label>
+                    <Form.Control 
+                    className="form-control form-control-sm" 
+                    disabled={Edit} type="text" 
+                    defaultValue={Role} 
+                    onChange={(e)=>setRole(e.target.value)} 
+                    />
                 </Col>
                 <Col>
                     <Form.Label>Technologies Used</Form.Label>
-                    <Form.Control className="form-control form-control-sm" disabled={Edit} type="text" defaultValue={TechnologiesUsed} onChange={(e)=>setTechnologiesUsed(e.target.value)} />
+                    <Form.Control 
+                    className="form-control form-control-sm" 
+                    disabled={Edit} 
+                    type="text" 
+                    defaultValue={TechnologiesUsed} 
+                    onChange={(e)=>setTechnologiesUsed(e.target.value)} 
+                    />
                 </Col>
             </Form.Row>
             <Form.Row>
                 <Form.Label >Summary</Form.Label>
-                <Form.Control className="form-control form-control-sm" disabled={Edit} as="textarea" type="text" defaultValue={Summary} onChange={(e)=>setSummary(e.target.value)} />
+                <Form.Control 
+                className="form-control form-control-sm" 
+                disabled={Edit} 
+                as="textarea" 
+                type="text" 
+                defaultValue={Summary} 
+                onChange={(e)=>setSummary(e.target.value)} 
+                />
             </Form.Row>
             <Form.Row style={{  display: "flex", flexDirection: "row", justifyContent: "Space-between",paddingTop:"10px" }}>
-                <Button className="btn  btn-danger btn-sm" onClick={() => { RemoveElement(data) }}>Remove</Button>
+                <Button 
+                    className="btn  btn-danger btn-md" 
+                    onClick={() => { RemoveElement(data) }}
+                >
+                    Remove
+                </Button>
                 <h6 style={{ "color": "red" }}>{error}</h6>
-                <Button className={Edit ? "btn btn-secondary btn-sm" : "btn btn-warning btn-sm"}  onClick={(e) => { ButtonClick(e.target.value) }}>{Edit ? "Edit" : "Save"}</Button>
+                <Button 
+                    className={Edit ? "btn btn-secondary btn-md" : "btn btn-warning btn-md"}  
+                    onClick={(e) => { ButtonClick(e.target.value) }}
+                >
+                    {Edit ? "Edit" : "Save"}
+                </Button>
             </Form.Row>
         </div>
     )

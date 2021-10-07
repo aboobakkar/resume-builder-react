@@ -1,25 +1,27 @@
 
 const IntialState = {
-    email: "aboobakkar.mec@gmail.com",
-    FirstName: "Aboobakkarr",
+    Email: "aboobakkar.mec@gmail.com",
+    FirstName: "Aboobakkar",
     LastName: "P S",
     Phone: 9747752015,
-    Address: { City: "Pallikkara", District: "Ernakulam", State: "kerala", Country: "India", Pincode: "683565" },
+    Address: { Address: "Pallikkara", Country: "India"},
     Education: [{
         Id: "1",
-        Degree: "Btech",
-        Institution: "Model Engineering College",
-        Percentage : "55"
+        Degree: "B Tech",
+        Institution: "Govt.Model Engineering College",
+        Percentage : "55",
+        Location: "Kochi"
     }],
-    Experince: [{
+    Experience: [{
         Id: 1,
-        Institution: "Beo Software Pvt Ltd",
-        Post: "React Developer",
-        TechnologiesUsed: ["React", "JavaScript"]
+        Company: "Beo Software Pvt Ltd",
+        Role: "React Developer",
+        TechnologiesUsed: ["React", "JavaScript"],
+        Summary:"Lorem Lipsum Lorem Lipsum Lorem Lipsum Lorem Lipsum Lorem Lipsum Lorem Lipsum"
     }],
     Skill: [{ id: "1", text: "React" }, { id: "2", text: "Javascript" }]
 }
-const reducer = (state = IntialState, action) => {
+const resumes = (state = IntialState, action) => {
     switch (action.type) {
         case "AddEducation": {
             return { ...state, Education: action.payload }
@@ -28,15 +30,15 @@ const reducer = (state = IntialState, action) => {
             return { ...state, Education: action.payload }
         }
         case "AddExperience": {
-            return { ...state, Experince: action.payload }
+            return { ...state, Experience: action.payload }
         }
         case "RemoveExperience": {
-            return { ...state, Experince: action.payload }
+            return { ...state, Experience: action.payload }
         }
         case "Basic": {
             return {
                 ...state,
-                email: action.payload.email,
+                Email: action.payload.email,
                 FirstName: action.payload.first,
                 LastName: action.payload.last,
                 Phone: action.payload.phone,
@@ -54,4 +56,4 @@ const reducer = (state = IntialState, action) => {
     }
 }
 
-export default reducer
+export default resumes
